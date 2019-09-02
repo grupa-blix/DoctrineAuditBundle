@@ -151,6 +151,14 @@ class AuditHelper
                 $convertedValue = $type->convertToPHPValue($value, $platform);
 
                 break;
+            case Type::BLOB:
+                if (\is_resource($value)) {
+                    $convertedValue = stream_get_contents($value, -1, 0);
+                    break;
+                }
+                $convertedValue = $type->convertToDatabaseValue($value, $platform);
+
+                break;
             default:
                 $convertedValue = $type->convertToDatabaseValue($value, $platform);
         }
