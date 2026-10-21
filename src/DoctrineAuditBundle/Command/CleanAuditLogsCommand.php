@@ -6,7 +6,7 @@ use DH\DoctrineAuditBundle\Reader\AuditReader;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -58,7 +58,7 @@ class CleanAuditLogsCommand extends Command implements ContainerAwareInterface
         $until->modify('-'.$keep.' month');
 
         /**
-         * @var RegistryInterface
+         * @var ManagerRegistry
          */
         $registry = $this->container->get('doctrine');
 

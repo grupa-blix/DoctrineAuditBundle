@@ -8,7 +8,7 @@ use DH\DoctrineAuditBundle\Helper\UpdateHelper;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -55,7 +55,7 @@ class UpdateSchemaCommand extends Command implements ContainerAwareInterface
         $updater = new UpdateHelper($manager);
 
         /**
-         * @var RegistryInterface
+         * @var ManagerRegistry
          */
         $registry = $this->container->get('doctrine');
 
